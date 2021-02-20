@@ -1,10 +1,44 @@
-$(document).ready(function(){
+$(function(){
+    $("#binario").keyup(function(){
+        $("#decimal").val(dec2bin($(this).val()));
+    });
+    $("#numero").keyup(function(){
+        $("#resultado").val(bin2dec($(this).val()));
+    });
 });
 
-function dec2bin() {
-    //Tomo el valor desde HTML
-    let numero = document.getElementById('numero').value;
-    //Defino un array vacío
+//Validar números del 0 al 1
+function validarNumericos(event) {
+    if(event.charCode >= 48 && event.charCode < 50){
+      return true;
+     }
+     return false;        
+}
+
+//Convertir binario a decimal
+function bin2dec(valor){
+    var array = [];
+    var numbers = valor.split("");
+    var decimal = 0;
+    var counter = 0;
+    for(var i = numbers.length-1; i>=0;i--){
+        if(numbers[i] == 0){
+            array[i] = 0;
+        }
+        else{
+            array[i] = Math.pow(2,counter);
+        }
+        counter++;
+    }
+    for(var a = 0; a < array.length; a++){
+        decimal += array[a];
+    }
+    return decimal;
+}
+
+//Convertir decimal a binario
+function dec2bin(valor2) {
+    let numero = valor2;
     let pares = [];
     //Lleno de los números multiplos de 2 desde 1 hasta el numero, 
     //mientras i sea menos que el numero
@@ -24,6 +58,5 @@ function dec2bin() {
             salida = salida + '0';
         }
     }
-    //Envío el valor al HTML
-    document.getElementById('resultado').value = salida;
+    return salida;
 }
