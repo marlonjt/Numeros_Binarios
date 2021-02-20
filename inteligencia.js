@@ -17,21 +17,24 @@ function validarNumericos(event) {
 
 //Convertir binario a decimal
 function bin2dec(valor){
-    var array = [];
-    var numbers = valor.split("");
-    var decimal = 0;
-    var counter = 0;
-    for(var i = numbers.length-1; i>=0;i--){
-        if(numbers[i] == 0){
-            array[i] = 0;
+    let array = [];
+    //divido el valor ingresado de tipo String en un array
+    let numbers = valor.split("");
+    let decimal = 0;
+
+    let counter = 0;
+    for(let i = numbers.length-1; i>=0;i--){
+        if(numbers[i] == 1){
+            array[i] = Math.pow(2,counter);
         }
         else{
-            array[i] = Math.pow(2,counter);
+            array[i] = 0;
         }
         counter++;
     }
-    for(var a = 0; a < array.length; a++){
-        decimal += array[a];
+    //Sumatoria del array
+    for(let i = 0; i < array.length; i++){
+        decimal += array[i];
     }
     return decimal;
 }
