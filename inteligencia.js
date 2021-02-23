@@ -36,7 +36,7 @@ function bin2dec(valor){
     for(let i = 0; i < array.length; i++){
         decimal += array[i];
     }
-    return decimal;
+    return valor + " = " +decimal;
 }
 
 //Convertir decimal a binario
@@ -61,5 +61,5 @@ function dec2bin(valor2) {
             salida = salida + '0';
         }
     }
-    return salida;
+    return valor2 + " = " + salida;
 }
